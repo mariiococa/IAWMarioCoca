@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teclados del Futuro – MCA Edition</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+  --accent: #00ffa9;
+  --text: #e6edf3;
+  --bg1: #05121b;
+  --bg2: #071d29;
+  --bg3: #00333b;
+  --bg4: #0a4a4f;
+}
+
+/* Fondo animado mejorado */
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  margin: 0;
+  overflow-x: hidden;
+  background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3), var(--bg4), #013c47);
+  background-size: 600% 600%;
+  animation: gradientMove 14s ease-in-out infinite;
+  will-change: background-position, filter;
+  filter: brightness(1.1) contrast(1.05);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Marca MCA */
+.watermark {
+  position: fixed;
+  bottom: 15px; right: 25px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  opacity: 0.08;
+  letter-spacing: 4px;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10;
+  animation: pulse 4s infinite alternate;
+}
+@keyframes pulse {
+  0% { opacity: 0.05; }
+  100% { opacity: 0.15; }
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(10,15,20,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #1f242d;
+  padding: 1rem 10%;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 20;
+}
+header h1 {
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+nav a {
+  color: var(--text);
+  margin-left: 1.2rem;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+nav a:hover { color: var(--accent); }
+
+/* Secciones */
+section {
+  padding: 5rem 10%;
+  max-width: 1100px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease;
+}
+section.visible { opacity: 1; transform: translateY(0); }
+h2 {
+  text-align: center;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+p { text-align: center; margin-bottom: 1.4rem; }
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  gap: 1.6rem;
+}
+.card {
+  background: rgba(20,25,35,0.85);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  border: 1px solid #1f242d;
+  padding: 1.3rem;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px #00ffa942;
+}
+.card h3 { color: var(--accent); margin-bottom: .5rem; transition: color .3s; }
+.card:hover h3 { color: #9affdd; }
+.card small { color: #a0a8b4; font-size: .9rem; }
+
+/* Formulario */
+form { display: flex; flex-direction: column; gap: 1rem; }
+input, textarea {
+  background: rgba(20,25,30,0.9);
+  border: 1px solid #232935;
+  border-radius: 6px;
+  color: var(--text);
+  padding: 0.8rem;
+  transition: border-color 0.3s ease;
+}
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+button {
+  background: var(--accent);
+  color: #000;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+button:hover { transform: scale(1.05); }
+
+/* Popup del Easter Egg */
+#easterEggPopup {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translate(-50%,50%);
+  background: var(--accent);
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 0 0 15px var(--accent);
+  display: none;
+  animation: fadePopup 2s;
+}
+@keyframes fadePopup {
+  0% { opacity: 0; transform: translate(-50%,60%); }
+  10%,80% { opacity: 1; transform: translate(-50%,50%); }
+  100% { opacity: 0; }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid #1f242d;
+  color: #a0a8b4;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Teclados del Futuro</h1>
+  <nav>
+    <a href="#populares">Populares</a>
+    <a href="#gaming">Gaming</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section id="intro">
+  <h2>Explora la Innovación</h2>
+  <p>Descubre los teclados más vendidos y avanzados de 2025: potentes, precisos y pensados para cada usuario.</p>
+</section>
+
+<section id="populares">
+  <h2>Más Vendidos</h2>
+  <div class="cards">
+    <div class="card"><h3>Logitech MK235</h3><p>Combo inalámbrico fiable.</p><small>Ideal para oficina.</small></div>
+    <div class="card"><h3>Razer Huntsman V3 Mini</h3><p>Compacto y veloz.</p><small>Amado por gamers.</small></div>
+    <div class="card"><h3>Keychron K3 V2</h3><p>Mecánico ultrafino con Bluetooth.</p><small>Portátil y elegante.</small></div>
+    <div class="card"><h3>Logitech Ergo K860</h3><p>Diseño ergonómico curvado.</p><small>Escritura sin fatiga.</small></div>
+    <div class="card"><h3>MX Keys S</h3><p>Silencioso y retroiluminado.</p><small>Productividad premium.</small></div>
+    <div class="card"><h3>Microsoft Designer Compact</h3><p>Ultradelgado y preciso.</p><small>Perfecto en movilidad.</small></div>
+    <div class="card"><h3>Logitech K400+</h3><p>Con touchpad integrado.</p><small>Ideal para Smart TV.</small></div>
+    <div class="card"><h3>HP 230 Combo</h3><p>Teclado más ratón inalámbricos.</p><small>Diseño limpio.</small></div>
+    <div class="card"><h3>MX Keys Mini</h3><p>Pequeño y versátil.</p><small>Gran autonomía.</small></div>
+    <div class="card"><h3>Royal Kludge RKR65</h3><p>Formato 65 % con RGB.</p><small>Compacto y potente.</small></div>
+  </div>
+</section>
+
+<section id="gaming">
+  <h2>Favoritos para Gaming</h2>
+  <div class="cards">
+    <div class="card"><h3>Corsair K70 RGB MK.2</h3><p>Switches Cherry MX RGB.</p><small>Alta precisión.</small></div>
+    <div class="card"><h3>SteelSeries Apex Pro Mini</h3><p>Teclas ajustables magnéticas.</p><small>Precisión total.</small></div>
+    <div class="card"><h3>Razer BlackWidow V4</h3><p>RGB avanzado y rendimiento.</p><small>Diseño gamer.</small></div>
+    <div class="card"><h3>Wooting 60HE</h3><p>Switches analógicos rápidos.</p><small>Sin latencia.</small></div>
+    <div class="card"><h3>Corsair K70 Pro TKL</h3><p>Polling rate 8 000 Hz.</p><small>Modo torneo.</small></div>
+    <div class="card"><h3>ASUS ROG Falchion ACE</h3><p>Con pantalla táctil lateral.</p><small>Compacto y preciso.</small></div>
+    <div class="card"><h3>Razer Ornata V3</h3><p>Meca‑membrana cómoda.</p><small>Gran comodidad.</small></div>
+    <div class="card"><h3>Mountain Everest Max</h3><p>Modular con numpad extraíble.</p><small>Configuración pro.</small></div>
+  </div>
+</section>
+
+<section id="contacto">
+  <h2>Tu opinión importa</h2>
+  <form id="formulario">
+    <input type="text" placeholder="Tu nombre" required>
+    <textarea placeholder="Tu teclado favorito..." required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+  <p id="gracias" style="display:none;text-align:center;margin-top:1rem;">¡Gracias por tu mensaje!</p>
+</section>
+
+<footer>
+  <p>© 2025 Teclados del Futuro | Edición MCA</p>
+</footer>
+
+<div class="watermark">MCA</div>
+<div id="easterEggPopup">✨ ¡Descubriste el Sello MCA! ✨</div>
+
+<script>
+/* Scroll Reveal */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting)e.target.classList.add('visible'); });
+},{threshold:0.15});
+document.querySelectorAll('section').forEach(s=>observer.observe(s));
+
+/* Formulario */
+document.getElementById('formulario').addEventListener('submit',e=>{
+  e.preventDefault();
+  e.target.style.display='none';
+  document.getElementById('gracias').style.display='block';
+});
+
+/* Easter egg */
+let code='';
+window.addEventListener('keydown',ev=>{
+  code+=ev.key.toLowerCase();
+  if(code.includes('mca')){
+    code='';
+    const popup=document.getElementById('easterEggPopup');
+    popup.style.display='block';
+    setTimeout(()=>popup.style.display='none',2000);
+  }
+  if(code.length>5) code=code.slice(-3);
+});
+</script>
+</body>
+</html>
